@@ -21,21 +21,20 @@ def get_info():
             json.dump(data, f, indent=4)
 
 
-def get_win(year):
+def get_statistic(year):
     with open(f'tmp/res{str(year)}.json', 'r') as f:
         data = json.load(f)
         fc_name = data['response']['team']['name']
         fc_wins = data['response']['fixtures']['wins']['total']
         fc_loses = data['response']['fixtures']['loses']['total']
         fc_draws = data['response']['fixtures']['draws']['total']
-        print(fc_name)
-    pass
-
-
-def get_loses():
-    pass
+        print(f'A football club: \b {fc_name} has next stats in {year}y season:'
+              f'\n total wins: {fc_wins},'
+              f'\n total draws: {fc_draws},'
+              f'\n total loses: {fc_loses},'
+              f'\n wins percentage: {(fc_wins / (fc_draws + fc_wins + fc_loses)) * 100}%')
 
 
 if __name__ == '__main__':
     # get_info()
-    get_win(2020)
+    get_statistic(2019)
