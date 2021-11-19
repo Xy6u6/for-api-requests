@@ -19,7 +19,6 @@ def get_currency(years):
 
 
 def get_max_rate():
-    # TODO: FIX 10
     list_of_dates = []
     list_of_rates = []
     listoffiles = list((os.listdir(f'{os.getcwd()}/json_data')))
