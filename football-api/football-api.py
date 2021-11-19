@@ -36,5 +36,5 @@ def get_statistic(year):
 
 
 if __name__ == '__main__':
-    # get_info()
-    get_statistic(2019)
+    #get_info()
+    get_statistic(2021)
