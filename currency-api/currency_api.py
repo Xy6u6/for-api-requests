@@ -23,7 +23,7 @@ def get_max_rate():
     list_of_rates = []
     listoffiles = list((os.listdir(f'{os.getcwd()}/json_data')))
     for i in listoffiles:
-        with open(f'json_data/{i}') as f:
+        with open(f'json_data/{i}','w') as f:
             data = json.load(f)
             list_of_rates.append(data['rates']['UAH'])
             list_of_dates.append(data['date'])
