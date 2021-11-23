@@ -20,8 +20,9 @@ def get_quotes(url):
     for l, k in enumerate(quotes):
         with open(f'list of {tag} sentences.txt', 'a') as f:
             f.write(f'{l + 1}. {k.text} by: {authors[l].text} \n')
+
     if check_next_page(url):
-        nextpage = check_next_page(url)
+        nextpage = url + '/page/2'  #TODO: FIX constant 2
         get_quotes(nextpage)
     else:
         return
@@ -31,13 +32,15 @@ def check_next_page(url):
     res = requests.get(url)
     sp = BeautifulSoup(res.text, 'lxml')
     try:
-        nextpage = sp.find('li', class_='next').find('a').get('href')
-        return nextpage
+        sp.find('li', class_='next').find('a').get('href')
+        return True
     except AttributeError:
         return False
-    return True
+
 
 
 if __name__ == '__main__':
-    url = 'https://quotes.toscrape.com/tag/love'
-    get_quotes(url)
+    urls = get_top_ten_tegs()
+    for i in urls:
+        print(f'scrapping page {i}')
+        get_quotes(i)
