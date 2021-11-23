@@ -23,14 +23,16 @@ def get_max_rate():
     list_of_rates = []
     listoffiles = list((os.listdir(f'{os.getcwd()}/json_data')))
     for i in listoffiles:
-        with open(f'json_data/{i}','w') as f:
+        with open(f'json_data/{i}','r') as f:
             data = json.load(f)
             list_of_rates.append(data['rates']['UAH'])
             list_of_dates.append(data['date'])
             print(data['date'], data['rates']['UAH'])
     maxrate =list_of_rates.index(max(list_of_rates))
+    minrate =list_of_rates.index(min(list_of_rates))
     print(f'the max rate was in {list_of_dates[maxrate]} year, is {max(list_of_rates)}')
+    print(f'the min rate was in {list_of_dates[maxrate]} year, is {min(list_of_rates)}')
 
 if __name__ == '__main__':
-    # get_currency(15)
+    get_currency(15)
     get_max_rate()
