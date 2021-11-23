@@ -8,8 +8,8 @@ def get_res():
     tags = sp.findAll('span', class_='tag-item')
     quotes = sp.findAll('span', class_='text')
     authors = sp.findAll('small', class_='author')
-
-    for i, k in enumerate(quotes):
-        print(f'{i+1}. {k.text} by: {authors[i].text}')
+    print(tags[0])
+    # for i, k in enumerate(quotes):
+    #     print(f'{i+1}. {k.text} by: {authors[i].text}')
 if __name__ == '__main__':
     get_res()
