@@ -4,7 +4,7 @@ import requests
 import os
 
 
-def get_currency(years):
+def collect_currency(years: int):
     today = datetime.date.today()
     for i in range(years):
         symbols = "USD, UAH"
@@ -18,7 +18,7 @@ def get_currency(years):
         today = today.replace(year=today.year - 1)
 
 
-def get_max_rate():
+def print_max_rate():
     list_of_dates = []
     list_of_rates = []
     listoffiles = list((os.listdir(f'{os.getcwd()}/json_data')))
@@ -34,5 +34,5 @@ def get_max_rate():
     print(f'the min rate was in {list_of_dates[maxrate]} year, is {min(list_of_rates)}')
 
 if __name__ == '__main__':
-    get_currency(15)
-    get_max_rate()
+    collect_currency(15)
+    print_max_rate()

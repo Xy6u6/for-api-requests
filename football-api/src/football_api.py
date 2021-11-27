@@ -1,6 +1,5 @@
 import requests
 import json
-import pandas as pd
 
 url = "https://v3.football.api-sports.io/teams/statistics?season=2020&team=550&league=333"
 
